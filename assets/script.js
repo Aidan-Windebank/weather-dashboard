@@ -46,7 +46,7 @@ function getForecast(location) {
             }
             console.log(city, fiveDay);
             todaysForecast(fiveDay);
-            fieDayForecast(fiveDay)
+            fiveDayForecast(fiveDay)
 
             // function to get todays forecast out of 5 day forecast and display in container to the right
             function todaysForecast(fiveDay) {
@@ -75,12 +75,41 @@ function getForecast(location) {
                 humidityLine.text(`Humidity: ${humidity} %`)
             }
 
-            function fieDayForecast (fiveDay){
+            // utilized same function for daily but in for loop for each day
+            function fiveDayForecast (fiveDay){
+                for (var i = 0; i < 5; i++) {
+                    var date = dayjs(fiveDay[i].dt_txt).format('MMMM D, YYYY')
+                    var temp = fiveDay[i].main.temp;
+                    var wind = fiveDay[i].wind.speed;
+                    var humidity = fiveDay[i].main.humidity;
+                    var iconUrl = `https://openweathermap.org/img/w/${fiveDay[i].weather[0].icon}.png`;
+                
 
+                    var fiveDayContainer = $('#five-day-forecast')
+                    var container = $('<div>');
+                    var card = $('<div>');
+                    var dailyForecast = $('<div>');
+                    var dateLine = $('<h5>');
+                    var tempLine = $('<p>');
+                    var windLine = $('<p>');
+                    var humidityLine = $('<p>');
+                    var iconLine = $('<img>');   
+                    
+                    fiveDayContainer.append(container)
+                    container.append(card);
+                    card.append(dailyForecast);
+                    dailyForecast.append(dateLine, iconLine, tempLine, windLine, humidityLine);
+
+                    container.attr('class', 'col-md');
+                    card.attr('class', 'card bg-info h-100 text-black');
+                    
+                    dateLine.text(date);
+                    iconLine.attr('src', iconUrl);
+                    tempLine.text(`Temp: ${temp} °F`)
+                    windLine.text(`Wind: ${wind} MPH`)
+                    humidityLine.text(`Humidity: ${humidity} %`)
+                }
             }
-
-
-
         })
 }
 
