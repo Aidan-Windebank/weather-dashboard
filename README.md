@@ -14,7 +14,7 @@ A weather dashboard that will give current and 5-day forecasts and save previous
 
 ## Screen Shot of Working Website
 
-<img src="./assets/quiz.png" alt="screenshot of working web page"/>
+<img src="./images/weather.png" alt="screenshot of working web page"/>
 
 ## Link to Working Version of Code
-[Click Here to View Webpage](https://aidan-windebank.github.io/Web-APIs/)
+[Click Here to View Webpage](https://aidan-windebank.github.io/weather-dashboard/)
